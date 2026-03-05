@@ -52,7 +52,8 @@ import axios from "axios";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:3001";
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:3001";
 
 const user = ref("");
 const password = ref("");
@@ -79,7 +80,7 @@ const register = async () => {
   }
 
   try {
-    await axios.post(`${API_BASE_URL}/api/v1/users`, {
+    await axios.post(`${API_BASE_URL}/api/v1/auth/register`, {
       username: user.value,
       password: password.value,
     });

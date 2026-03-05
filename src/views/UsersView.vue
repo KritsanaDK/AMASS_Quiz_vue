@@ -78,7 +78,7 @@ const loadUsers = async () => {
   }
 
   try {
-    const response = await axios.get(`${API_BASE_URL}/api/v1/users`, {
+    const response = await axios.get(`${API_BASE_URL}/api/v1/users/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

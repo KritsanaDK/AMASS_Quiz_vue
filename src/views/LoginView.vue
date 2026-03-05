@@ -51,7 +51,8 @@ import axios from "axios";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:3001";
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:3001";
 
 const user = ref("");
 const password = ref("");
@@ -85,15 +86,15 @@ const login = async () => {
   }
 
   try {
-    const response = await axios.post(`${API_BASE_URL}/api/v1/login`, {
+    const response = await axios.post(`${API_BASE_URL}/api/v1/auth/login`, {
       username: user.value,
       password: password.value,
     });
 
-    console.log("Login response:", response?.data?.data?.access_token);
+    console.log("Login response:", response?.data?.data?.token);
 
-    if (response?.data?.data?.access_token) {
-      localStorage.setItem("token", response.data.data.access_token);
+    if (response?.data?.data?.token) {
+      localStorage.setItem("token", response.data.data.token);
     }
 
     openDialog("Login success.", "success", "/users");
